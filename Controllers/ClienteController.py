@@ -8,6 +8,12 @@ def Incluir(cliente):
     cliente.nome, cliente.idade, cliente.profissao).rowcount
     db.cnxn.commit()
 
+def Excluir(id):
+    count = db.cursor.execute("""
+    DELETE FROM Cliente WHERE ClienteID = ?""",
+    id).rowcount
+    db.cnxn.commit()
+
 def SelecionarTodos():
     db.cursor.execute("SELECT * FROM CLIENTE")
     costumerList = []

@@ -5,7 +5,7 @@ import Pages.Cliente.List as PageListCliente
 
 
 st.sidebar.title('Menu')
-Page_cliente = st.sidebar.selectbox('Cliente', ['Incluir','Alterar','Excluir', 'Consultar'])
+Page_cliente = st.sidebar.selectbox('Cliente', ['Incluir', 'Consultar'])
 
 if Page_cliente == "Consultar":
     PageListCliente.List()
