@@ -12,4 +12,5 @@ if Page_cliente == "Consultar":
    
 
 if Page_cliente == "Incluir":
+    st.experimental_set_query_params()
     PageCreateCliente.IncluirClientePage()

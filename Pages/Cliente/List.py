@@ -6,6 +6,7 @@ import Pages.Cliente.Create
 def List():
     paramId = st.experimental_get_query_params()
     if paramId == {}:
+        st.experimental_set_query_params()
         columns = st.columns((1,2,1,2,2,2))
         campos = ['Nº', 'Nome', 'Idade', 'Profissão', 'Excluir', 'Alterar']
         for col, campo_nome in zip(columns, campos):
@@ -33,4 +34,9 @@ def List():
                 st.experimental_rerun()
 
     else:
+        on_click_voltar = st.button('Voltar')
+        if on_click_voltar:
+            st.experimental_set_query_params()
+            st.experimental_rerun()
         Pages.Cliente.Create.IncluirClientePage()
+

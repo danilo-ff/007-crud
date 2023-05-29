@@ -10,6 +10,7 @@ def IncluirClientePage():
     if idAlteracao.get("id") != None:
         idAlteracao = idAlteracao.get("id")[0]
         clienteRecuperado = Controllers.ClienteController.SelecionarById(idAlteracao)
+        st.experimental_set_query_params(id=[clienteRecuperado.id])
         st.title("Alterar Cliente")
 
     else:
@@ -31,6 +32,10 @@ def IncluirClientePage():
     
         input_button_submit = st.form_submit_button("Enviar")
     if input_button_submit:
-                
-        Controllers.ClienteController.Incluir(cliente.Cliente(0, input_name, input_age, input_occupation))
-        st.success("Cliente incluido com sucesso.")
+        if clienteRecuperado == None:
+              Controllers.ClienteController.Incluir(cliente.Cliente(0, input_name, input_age, input_occupation))
+              st.success("Cliente incluido com sucesso.")
+        else:
+              st.experimental_set_query_params()
+              Controllers.ClienteController.Alterar(cliente.Cliente(clienteRecuperado.id, input_name, input_age, input_occupation))
+              st.success("Cliente alterado com sucesso.")
